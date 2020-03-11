@@ -33,7 +33,7 @@ function getDaysForMonth($month, $year)
 
     for($i = 1; $i <= $daysInMonth; $i++){
         $month = date('m', mktime(0,0,0,$month,$i,$year));
-        $week = date('w', mktime(0,0,0,$month,$i,$year));
+        $week = date('W', mktime(0,0,0,$month,$i,$year));
         $weekDay = date('D', mktime(0,0,0,$month,$i,$year));
         $day = date('d', mktime(0,0,0,$month,$i,$year));
 
