@@ -1,83 +1,99 @@
 <?php
-//https://stackoverflow.com/questions/5536041/echo-all-months-with-days-calendar
-//https://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_date
-//https://www.w3schools.com/php/func_date_date.asp
-function getDates($year)
-{
-    $dates = array();
 
-    // determine if the year is a leap year
-    date("L", mktime(0,0,0, 7,7, $year)) ? $days = 366 : $days = 365;
-    for($i = 1; $i <= $days; $i++){
-        $month = date('m', mktime(0,0,0,1,$i,$year));
-        $wk = date('W', mktime(0,0,0,1,$i,$year));
-        $wkDay = date('D', mktime(0,0,0,1,$i,$year));
-        $day = date('d', mktime(0,0,0,1,$i,$year));
+$input_month = $argv[1];
+$input_year = $argv[2];
 
-        $dates[$month][$wk][$wkDay] = $day;
-    } 
-
-    return $dates;   
-}
-
-function shiftDays($array) {
-    $lastElement = array_pop($array);
-    array_unshift($array, $lastElement);
+function shift_days($array) {
+    $last_element = array_pop($array);
+    array_unshift($array, $last_element);
     return $array;
 }
 
-function getDaysForMonth($month, $year)
+function get_days_for_month($month, $year)
 {
-    $dates = array();
-    $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
 
-    for($i = 1; $i <= $daysInMonth; $i++){
+    $dates = array();
+    $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+
+    for($i = 1; $i <= $days_in_month; $i++){
         $month = date('m', mktime(0,0,0,$month,$i,$year));
         $week = date('W', mktime(0,0,0,$month,$i,$year));
-        $weekDay = date('D', mktime(0,0,0,$month,$i,$year));
+        $week_day = date('D', mktime(0,0,0,$month,$i,$year));
+        if($week_day == 'Sun') {
+            $week = $week + 1;
+        }
+        $week = str_pad($week, 2, '0', STR_PAD_LEFT);
+        $week = intval($week, 10);
         $day = date('d', mktime(0,0,0,$month,$i,$year));
 
-        $dates[$month][$week][$weekDay] = $day;
+        $dates[$month][$week][$week_day] = $day;
     }
 
     return $dates;
 }
 
+function print_month($selected_month, $selected_year) {
 
     $weekdays = array('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
-    $weekdaysAbbreviated = array('Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa');
-    $dates = getDaysForMonth(3,2020);
+    $weekdays_abbreviated = array('Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa');
+    $dates = get_days_for_month($selected_month,$selected_year);
 
     foreach($dates as $month => $weeks) {
 
-        echo implode(' ', $weekdaysAbbreviated);
+        echo "\r\n--------------------\r\n";
+        echo date('F', mktime(0,0,0,$selected_month,1,$selected_year));
+        echo " ",date('Y', mktime(0,0,0,$selected_month,1,$selected_year));
+        echo "\r\n--------------------\r\n";
+        echo implode(' ', $weekdays_abbreviated);
+        echo "\r\n--------------------";
         foreach($weeks as $week => $days) {
             echo "\r\n";
-            $datesInWeek = array();
+            $dates_in_week = array();
             foreach($weekdays as $day) {
-                array_push($datesInWeek, isset($days[$day]) ? $days[$day] : 'xx');
+                array_push($dates_in_week, isset($days[$day]) ? $days[$day] : '  ');
             }
-            $datesInWeek = shiftDays($datesInWeek);
-            foreach($datesInWeek as $date) {
+            $dates_in_week = shift_days($dates_in_week);
+            foreach($dates_in_week as $date) {
                 echo $date;
                 echo ' ';
             }
         }
+        echo "\r\n--------------------\r\n";
     }
-    // foreach($dates as $month => $weeks) {
+}
 
-    //     echo implode(' ', $weekdaysAbbreviated);
-    //     foreach($weeks as $week => $days) {
-    //         echo "\r\n";
-    //         $datesInWeek = array();
-    //         foreach($weekdays as $day) {
-    //             array_push($datesInWeek, isset($days[$day]) ? $days[$day] : 'xx');
-    //         }
-    //         $datesInWeek = shiftDays($datesInWeek);
-    //         foreach($datesInWeek as $date) {
-    //             echo $date;
-    //             echo ' ';
-    //         }
-    //     }
-    // }
+function print_calendar($month, $year) {
+    $month_one = $month;
+    if($month_one + 1 > 12) {
+        $month_two = $month_one - 11;
+    } else {
+        $month_two = $month_one + 1;
+    }
+
+    if($month_one + 2 > 12) {
+        $month_three = $month_one - 10;
+    } else {
+        $month_three = $month_one + 2;
+    }
+
+    $year_one = $year;
+    if($month_two === ($month + 1)) {
+        $year_two = $year_one;
+    } else {
+        $year_two = $year_one +1;
+    }
+    if($month_three === ($month + 2)) {
+        $year_three = $year_one;
+    } else {
+        $year_three = $year_one + 1;
+    }
+
+    print_month($month_one, $year_one);
+    echo "\r\n";
+    print_month($month_two, $year_two);
+    echo "\r\n";
+    print_month($month_three, $year_three);
+}
+
+print_calendar($input_month, $input_year);
 ?>
