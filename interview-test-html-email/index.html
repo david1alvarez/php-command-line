@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+	<style>
+		body {
+			font-family: 'Roboto';
+		}
+		
+		div#wrapper {
+			max-width: 590px;
+			margin-left: auto;
+			margin-right: auto;
+			background-color: black;
+			color: white;
+			text-align: center;
+		}
+
+		img {
+			width: 590px;
+		}
+
+		hr {
+			width: 500px;
+			background-color: white;
+		}
+		
+		ul#main-list > li {
+			font-weight: 600;
+			font-size: 16px;
+			text-align: left;
+			margin: 0 20px 20px;
+		}
+
+		ul#sub-list > li {
+			font-weight: 500;
+			font-size: 18px;
+			text-align: left;
+			margin: 0 20px 20px;
+		}
+
+		.button-structure {
+			width: 300px;
+			height: 50px;
+			font-size: 16px;
+			border-radius: 5px;
+			cursor: pointer;
+			color: white;
+			font-weight: 600;
+		}
+		.blue-button {
+			background-color: #1aced4;
+			border: none;
+		}
+
+		.black-button {
+			background-color: black;
+			border-color: #1aced4;
+			border-style: solid;
+		}
+
+		.list-row {
+			display: flex;
+			flex-direction: row;
+			padding: 10px 0;
+		}
+
+		.list-row > img {
+			max-width: 25px;
+			max-height: 25px;
+			padding-left: 30px;
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+
+		.list-row > div {
+			font-weight: 600;
+			font-size: 18px;
+			text-align: left;
+			padding: 10px;
+			max-width: 450px;
+		}
+	</style>
+    
+  </head>
+  <body>
+  	<div id="wrapper" style="display:flex; flex-direction: column; justify-content: center;">
+			<img src="./header.jpg"/>
+			<img src="./imac.jpg" />
+
+			<div style="color: #aaaaaa; padding-top: 10px;">
+				WAS $69, 
+				<span style="color: #1aced4; padding-left: 10px;">
+					NOW $49
+				</span>
+			</div>
+			<div style="font-size: 35px; font-weight:600; max-width: 400px; align-self: center; padding-top: 10px;">
+				Upgrade to Auto-Tune EFX+ for just $49!
+			</div>
+			<div style="padding-top: 35px;">
+				<button 
+					class="button-structure blue-button"
+					style="width: 250px;"
+					onclick="window.location='https://www.antarestech.com/product/auto-tune-efx-plus/'"
+				>
+					Order Now
+				</button>
+			</div>
+			
+			
+
+			<hr style="margin-top: 50px;">
+
+			<div style="padding-top: 25px; font-size: 16px; padding-top: 10px; color:1aced4;">AUTO-TUNE EFX+</div>
+			
+			<div style="font-size: 30px; font-weight: 600">Top Reasons to Upgrade</div>
+			<div style="font-size:18px; max-width: 460px; margin: auto; padding-top: 15px; line-height: 25px;">Auto-Tune EFX+ is an all-in-one vocal production tool combining industry-standard Auto-tune pitch correction, the extensive Auto-EFX multi-effects rack with vintage vocoder emulations, and a new, improved Auto-Motion pitch-shifting melodic pattern generator.</div>
+			<img src="./laptop.jpg"/>
+
+			<div>Highlights include:</div>
+
+			<hr>
+
+			<div class="list-row">
+				<img src="./check-bullet.png">
+				<div>
+					Real-time Auto-Tune pitch correction with fully adjustable Retune Speed and Humanize controls.
+				</div>
+			</div>
+
+			<div class="list-row">
+				<img src="./check-bullet.png">
+				<div>
+						Low-latency performance on stage or in the studio.
+				</div>
+			</div>
+
+			<div class="list-row">
+				<img src="./check-bullet.png">
+				<div>
+						Duet: Realistic doubling with adjustable pitch and timing variation
+				</div>
+			</div>
+
+			<div class="list-row">
+				<img src="./check-bullet.png">
+				<div>
+						Tube Amp: Analog tube distortion modeling
+				</div>
+			</div>
+
+			<div class="list-row">
+				<img src="./check-bullet.png">
+				<div>
+						Mutate: Ring-modulated audio mutation
+				</div>
+			</div>
+
+			<div class="list-row">
+				<img src="./check-bullet.png">
+				<div>
+						Filter: Highpass filter for EQ and special effects
+				</div>
+			</div>
+
+			<ul style="list-style-image: url(./bullet-small.png); margin-bottom: -10px; margin-left: 30px;" id="sub-list">
+				<li>Vocode: Ten authentically modeled vintage vocoder emulations</li>
+				<li>Pitch and Throat: Real-time pitch and formant shifting</li>
+				<li>Duet: Realistic doubling with adjustable pitch and timing variation</li>
+				<li>Tube Amp: Analog tube distortion modeling</li>
+				<li>Mutate: Ring-modulated audio mutation</li>
+				<li>Filter: Highpass filter for EQ and special effects</li>
+			</ul>
+			<div class="list-row">
+				<img src="./check-bullet.png">
+				<div>
+					Library of over 100 multi-effects patch presets crafted by leading producers, composers, and sound designers.
+				</div>
+			</div>
+			<div class="list-row">
+				<img src="./check-bullet.png">
+				<div>
+					The Auto-Motion melodic pattern generator lets you create patterns and hooks by automatically pitch-shifting your vocal or instrumental tracks.
+				</div>
+			</div>
+			<div class="list-row">
+				<img src="./check-bullet.png">
+				<div>
+					Compatible with the Auto-Key plugin (sold separately) for automatic key and scale detection.
+				</div>
+			</div>
+
+			<div style="padding-bottom: 20px; padding-top: 20px;">
+				<button 
+					class="button-structure black-button"
+					onclick="window.location='https://www.antarestech.com/product/auto-tune-efx-plus#video/1'"
+				>
+					Watch EFX+ Intro Video
+				</button>
+			</div>
+			
+			<div style="padding-bottom: 20px;">
+				<button 
+					class="button-structure blue-button"
+					onclick="window.location='https://www.antarestech.com/product/auto-tune-efx-plus/'"
+				>
+					Order Now
+				</button>
+			</div>
+
+			<img src="./footer.png" />
+  	</div>
+  </body>
+</html>

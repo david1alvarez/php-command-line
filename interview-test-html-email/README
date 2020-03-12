@@ -1,0 +1,23 @@
+
+Mail Answer to: ben@antarestech.com
+
+------------------------------------------------------------------------------------------
+HTML Email Production Assignment:
+------------------------------------------------------------------------------------------
+
+Produce an HTML version of the file "html-email-example.png" suitable for use as an HTML
+email.  All the artwork assets are included in this folder.  There is also a starter file
+"index.html" that contains a link tag to the fonts needed and also the URLs for the links
+to use for the call to action buttons.
+
+Do not add any style tags or any more CSS to the head of the template page.  All the 
+styling should be inline in the HTML.  Leave the max-width: 590px in place for the 
+wrapper.
+
+A good result should match the original PNG mockup as well as possible.  It does not need
+to be pixel-accurate, but it should reproduce the artwork faithfully.
+
+The result will only be viewed by dragging the HTML file onto Google Chrome - don't worry 
+about nuance with other browsers or actually sending it out and viewing it via an email 
+client.   
+
