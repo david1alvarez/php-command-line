@@ -24,6 +24,9 @@ function get_days_for_month($month, $year)
         }
         $week = str_pad($week, 2, '0', STR_PAD_LEFT);
         $week = intval($week, 10);
+        if($week > 53) {
+            $week = $week - 53;
+        }
         $day = date('d', mktime(0,0,0,$month,$i,$year));
 
         $dates[$month][$week][$week_day] = $day;
@@ -36,14 +39,16 @@ function print_month($selected_month, $selected_year) {
 
     $weekdays = array('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
     $weekdays_abbreviated = array('Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa');
+    $divider = "\r\n--------------------\r\n"; 
+
     $dates = get_days_for_month($selected_month,$selected_year);
 
     foreach($dates as $month => $weeks) {
 
-        echo "\r\n--------------------\r\n";
+        echo $divider;
         echo date('F', mktime(0,0,0,$selected_month,1,$selected_year));
         echo " ",date('Y', mktime(0,0,0,$selected_month,1,$selected_year));
-        echo "\r\n--------------------\r\n";
+        echo $divider;
         echo implode(' ', $weekdays_abbreviated);
         echo "\r\n--------------------";
         foreach($weeks as $week => $days) {
@@ -58,7 +63,7 @@ function print_month($selected_month, $selected_year) {
                 echo ' ';
             }
         }
-        echo "\r\n--------------------\r\n";
+        echo $divider;
     }
 }
 
